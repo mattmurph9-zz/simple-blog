@@ -96,6 +96,7 @@ class User(db.Model):
     @classmethod
     def by_name(cls, name):
         u = User.all().filter('name =', name).get()
+        return u
 
     @classmethod
     def register(cls, name, pw, email = None):
@@ -144,6 +145,30 @@ class NewPost(BlogHandler):
     def get(self):
         if self.user:
             self.render("newpost.html")
+        else:
+            self.redirect("/login")
+
+    def post(self):
+        if not self.user:
+            self.redirect('/blog')
+
+        subject = self.request.get('subject')
+        content = self.request.get('content')
+
+        if subject and content:
+            p = Post(parent = blog_key(), subject = subject, content = content)
+            p.put()
+            self.redirect('/blog/%s' % str(p.key().id()))
+        else:
+            error = "need subject and content"
+            self.render("newpost.html", subject = subject, content = content, error = error)
+
+class EditPost(BlogHandler):
+    def get(self):
+        if self.user:
+            subject = self.request.get('subject')
+            content = self.request.get('content')
+            self.render("editpost.html")
         else:
             self.redirect("/login")
 
@@ -257,5 +282,6 @@ app = webapp2.WSGIApplication([('/', MainPage),
                                ('/signup', Register),
                                ('/login', Login),
                                ('/logout', Logout),
+                               ('/blog/editpost', EditPost)
                                 ], 
                                 debug=True)
