@@ -3,8 +3,28 @@
 {% block content %}
 
 	{%  for p in posts %}
-		{{ p.render() | safe }}
+		<div class="post-comments">
+			{{ p.render() | safe }}
+			<div class="edit-del-btns">
+				{{p.btns | safe}}
+			</div>
+			<br>
+			<div class="comments">
+				{% for c in comments %}
+					{% if c.post == p.key().id() %}
+						<div class="single-comment"><b>{{c.creator}}:</b> &nbsp;
+						{{ c.render() | safe }}
+						<div>{{c.btns | safe}}</div></div>
+					{% endif %}
+				{% endfor %}
+				{{p.addCom | safe}}
+			</div>
+			<br>
+		</div>
 		<br><br>
-	{% endfor %}
-	
+		{% endfor %}
+	<br>
+	<form action="/blog/newpost">
+    	<input type="submit" value="+ New Post" style="float: right" />
+  	</form>
 {% endblock %}

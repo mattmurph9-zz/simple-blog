@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>delete post</h2>
+
+  <form method="post">
+    <div class="post">
+      <div class="post-heading">
+        <div class="post-title">
+           {{post.subject}}
+        </div>
+
+        <div class="post-date">
+          {{post.created.strftime("%b %d, %Y")}}
+        </div>
+      </div>
+
+      <div class="post-content">
+        {{post.content | safe}}
+      </div>
+    </div>
+
+    <div class="error">{{error}}</div>
+
+    <h4>Are you sure you want to delete this post?</h4>
+
+    <input type="submit" value="Yes">
+  </form>
+  <form action="/blog">
+    <input type="submit" value="Cancel" />
+  </form>
+
+{% endblock %}

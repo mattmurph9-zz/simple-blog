@@ -6,7 +6,7 @@
     <form method="post">
       <label>
         <div>subject</div>
-        <input type="text" name="subject" value="should be filled">
+        <input type="text" name="subject" value="{{subject}}">
       </label>
 
       <label>
@@ -18,5 +18,8 @@
 
       <input type="submit">
       <input type="reset">
+    </form>
+    <form action="/blog">
+      <input type="submit" value="Cancel" />
     </form>
 {% endblock %}

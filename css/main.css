@@ -1,3 +1,8 @@
+* {
+	font-family: 'Playfair Display', serif;
+	font-size: 16px;
+}
+
 body {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 14px;
@@ -9,7 +14,7 @@ body {
 }
 
 .login-area {
-    font-size: 13px;
+    font-size: 16px;
     color: gray;
     position: absolute;
     top: 10px;
@@ -22,8 +27,38 @@ h2 {
 	margin-bottom: 20px;
 }
 
+.del-com {
+	display: inline-block;
+}
+
+.post-comments {
+	border: 3px solid #666;
+}
+
 .error {
 	color:red;
+}
+
+.edit-del {
+	white-space: nowrap;
+	padding-left: 5px;
+
+	display: inline;
+}
+
+.single-comment {
+	padding-top: 10px;
+}
+
+.comments {
+    margin-left: 20px; 
+}
+
+.add-comment {
+	float: right;
+	margin-right: 10px;
+	margin-left: auto;
+	margin-bottom: 10px;
 }
 
 label {
@@ -70,6 +105,7 @@ input[type=submit] {
 .post-heading {
 	position: relative;
 	border-bottom: 3px solid #666;
+	padding-left: 5px;
 }
 
 .post-title {
@@ -79,12 +115,20 @@ input[type=submit] {
 
 .post-date {
 	position: absolute;
-	right: 0px;
+	right: 5px;
+	bottom: 0px;
+	color: #999;
+}
+
+.post-creator {
+	position: static;
+	left: 50px;
 	bottom: 0px;
 	color: #999;
 }
 
 .post-content {
 	margin-top: 5px;
+	padding-left: 5px;
 }
 

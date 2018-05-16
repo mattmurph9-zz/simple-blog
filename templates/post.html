@@ -4,6 +4,10 @@
 			{{p.subject}}
 		</div>
 
+		<div class="post-creator">
+			{{p.creator}}
+		</div>
+
 		<div class="post-date">
 			{{p.created.strftime("%b %d, %Y")}}
 		</div>
@@ -12,5 +16,6 @@
 	<div class="post-content">
 		{{p._render_text | safe}}
 	</div>
-	<a class="login-link" href="/blog/editpost">Edit Post</a>
+	
+	<br>
 </div>
